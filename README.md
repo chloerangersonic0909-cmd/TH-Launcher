@@ -14,6 +14,13 @@ TH Launcher is its own product and codebase. The product owner designs the app U
 - Java runtime descriptor and validation model
 - Validated game-launch request model
 
+## First-run storage and download experience
+
+- The first-run setup should explain where game files will be stored before starting installation.
+- Prefer app-private storage by default; Android does not require broad file access permission for the app to manage its own private files.
+- If the user chooses a shared folder, request access through Android's system folder picker (Storage Access Framework) rather than requesting unrestricted storage access.
+- The owner-designed UI should expose a separate download panel with per-component progress for runtime, game version, libraries, and assets, including progress, size, speed, and retry/cancel states.
+
 ## Not yet a playable launcher
 
 The current code does **not** yet install Minecraft, download libraries/assets, install or bundle an Android-compatible Java runtime, authenticate Microsoft/Minecraft accounts, or start/render the game. These require separate implementations and device testing. Do not treat the current debug APK as a playable launcher.
