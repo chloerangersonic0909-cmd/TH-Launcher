@@ -15,6 +15,13 @@ TH Launcher is its own product and codebase. The product owner designs the app U
 - Validated game-launch request model
 - Customizable control-profile model with default keyboard and mouse bindings
 
+## Download engine
+
+- HTTPS streaming downloads with Range-based resume when supported by the server.
+- Per-download byte counts, optional total size, transfer speed, cancellation checks, and SHA-1/SHA-256 verification.
+- Download operations must run on a worker thread; the UI should observe progress callbacks and never block the main thread.
+- This engine is a reusable primitive. Minecraft version installation still needs to orchestrate version JSON, client JAR, libraries, assets, native extraction, Java runtime provisioning, and launch arguments.
+
 ## Real feature foundations added
 
 - Android process/device memory snapshot and frame-callback FPS counter.
