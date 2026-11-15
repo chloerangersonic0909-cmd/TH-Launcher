@@ -13,6 +13,7 @@ TH Launcher is its own product and codebase. The product owner designs the app U
 - Public Minecraft version-manifest reader (network work must run off the UI thread)
 - Java runtime descriptor and validation model
 - Validated game-launch request model
+- Customizable control-profile model with default keyboard and mouse bindings
 
 ## First-run storage and download experience
 
@@ -48,6 +49,7 @@ The current code does **not** yet install Minecraft, download libraries/assets, 
 - Never collect or store Microsoft passwords.
 - Use the supported Microsoft/Minecraft authorization flow for account access.
 - Use official public Minecraft metadata and respect all game/runtime licenses and redistribution terms.
+- Keep keyboard, mouse, touch, and future gamepad mappings configurable per account and Android device.
 - Never claim runtime or game-launch support until it is implemented and tested on Android.
 
 ## Planned next modules
@@ -58,6 +60,8 @@ The current code does **not** yet install Minecraft, download libraries/assets, 
 4. Microsoft/Minecraft account authorization and token lifecycle
 5. Game argument generation and Android process/rendering integration
 6. Profile persistence, diagnostics, and crash logs
+7. Android keyboard/mouse/touch event routing and in-game control customization
+8. AI diagnostics and owner-designed AI UI customization, with isolated per-account and per-device profiles
 
 ## License
 
