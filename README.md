@@ -2,13 +2,21 @@
 
 **An independently developed Minecraft: Java Edition launcher for Android.**
 
-TH Launcher is its own product and codebase. The app identity, visual design, architecture, and launcher features are developed for this project. The application UI is intentionally not templated: the product owner will design the screens.
+TH Launcher is its own product and codebase. The product owner designs the app UI; this repository focuses on the Android foundation and launcher systems.
 
-## Project status
+## Current implementation
 
-This repository currently contains the initial native Android/Kotlin project scaffold and a GitHub Actions debug-APK build workflow.
+- Native Android/Kotlin project scaffold
+- GitHub Actions debug-APK workflow
+- Domain model for game profiles and Minecraft versions
+- Private launcher directory layout
+- Public Minecraft version-manifest reader (network work must run off the UI thread)
+- Java runtime descriptor and validation model
+- Validated game-launch request model
 
-**It is not yet a working Minecraft launcher.** Minecraft installation, Java runtime integration, game launching, account authentication, version management, and mod-loader support have not been implemented.
+## Not yet a playable launcher
+
+The current code does **not** yet install Minecraft, download libraries/assets, install or bundle an Android-compatible Java runtime, authenticate Microsoft/Minecraft accounts, or start/render the game. These require separate implementations and device testing. Do not treat the current debug APK as a playable launcher.
 
 ## Build a debug APK
 
@@ -16,8 +24,6 @@ This repository currently contains the initial native Android/Kotlin project sca
 2. Select **Android APK**.
 3. Run the workflow with **Run workflow**, or push a commit to `main`.
 4. Open the completed run and download the `TH-Launcher-debug` artifact.
-
-The APK is currently a minimal Android shell, not a playable launcher.
 
 ## Technical baseline
 
@@ -32,19 +38,19 @@ The APK is currently a minimal Android shell, not a playable launcher.
 
 - Keep the product UI owner-designed; do not add a third-party launcher UI.
 - Keep launcher logic modular and testable.
-- Do not collect or store Microsoft passwords.
-- Implement Microsoft/Minecraft sign-in through the supported authorization flow when account support is added.
-- Integrate Java runtime and game components only with licenses and redistribution terms respected.
+- Never collect or store Microsoft passwords.
+- Use the supported Microsoft/Minecraft authorization flow for account access.
+- Use official public Minecraft metadata and respect all game/runtime licenses and redistribution terms.
+- Never claim runtime or game-launch support until it is implemented and tested on Android.
 
-## Planned modules
+## Planned next modules
 
-- Runtime manager
-- Minecraft version metadata and installer
-- Game profile and launch configuration
-- Account authorization
-- Mod-loader and mod-profile management
-- Download queue and progress reporting
-- Diagnostics and crash reports
+1. Version-detail metadata parsing and integrity-checked download engine
+2. Minecraft version installer (client, libraries, assets, natives)
+3. Android-compatible Java runtime integration and architecture detection
+4. Microsoft/Minecraft account authorization and token lifecycle
+5. Game argument generation and Android process/rendering integration
+6. Profile persistence, diagnostics, and crash logs
 
 ## License
 
