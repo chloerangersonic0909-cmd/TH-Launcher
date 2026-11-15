@@ -15,6 +15,13 @@ TH Launcher is its own product and codebase. The product owner designs the app U
 - Validated game-launch request model
 - Customizable control-profile model with default keyboard and mouse bindings
 
+## Modrinth modpack installation
+
+- The Modrinth .mrpack installer reads the pack manifest, copies the declared overrides, downloads manifest files, and verifies each file's SHA-1.
+- Installation is isolated to a new/empty instance directory and reports per-file progress.
+- The installer reports required Minecraft version and loader identifiers; it does not yet install the matching Fabric/Forge/NeoForge loader or provision the required Java runtime. A pack must not be advertised as launch-ready until those steps are completed.
+- CurseForge packs are not claimed as fully supported by this Modrinth installer.
+
 ## Download engine
 
 - HTTPS streaming downloads with Range-based resume when supported by the server.
