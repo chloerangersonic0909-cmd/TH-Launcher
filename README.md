@@ -15,6 +15,20 @@ TH Launcher is its own product and codebase. The product owner designs the app U
 - Validated game-launch request model
 - Customizable control-profile model with default keyboard and mouse bindings
 
+## Real feature foundations added
+
+- Android process/device memory snapshot and frame-callback FPS counter.
+- Persistent local offline player profiles. Offline profiles do not authenticate with Microsoft or grant online-mode access.
+- ZIP modpack import into an isolated instance directory, with path traversal checks, cancellation, progress callbacks, and expansion/file-count limits.
+- Modpack import currently extracts archive contents and identifies common manifest formats. It does not yet resolve/download remote mod dependencies, install loaders, or guarantee a pack is launchable.
+
+## Performance and modpack requirements
+
+- Keep installation and archive extraction off the main/UI thread.
+- Display measured app memory, available device memory, and FPS only when the corresponding game/render surface is active.
+- Import Modrinth/CurseForge packs through user-selected files and verify manifest file hashes and download URLs in the full installer.
+- Preserve the user's selected instance and never overwrite an existing instance during import.
+
 ## First-run storage and download experience
 
 - The first-run setup should explain where game files will be stored before starting installation.
